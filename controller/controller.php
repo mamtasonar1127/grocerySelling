@@ -9,32 +9,41 @@ $mod=new model;
 
 
 
-if(isset($_REQUEST['createacc']))
+if(isset($_REQUEST['register']))
 {
+	$username=$_REQUEST['username'];
 	$firstname=$_REQUEST['firstname'];
 	$lastname=$_REQUEST['lastname'];
-	$contact=$_REQUEST['contact'];
-	$emailid=$_REQUEST['emailid'];
-	$passwordacc=$_REQUEST['passwordacc'];
+	$email=$_REQUEST['email'];
+	$password=$_REQUEST['password'];
 	
 	
 	
-	$data=array("first_name"=>$firstname,"last_name"=>$lastname,"contact"=>$contact,"email_id"=>$emailid,"password"=>$passwordacc);
+	$data=array(
+
+		"first_name"=>$firstname,
+		"last_name"=>$lastname,
+		"username"=>$username,
+		"email"=>$email,
+		"password"=>$password
+	);
+
+	$table = "users";
 	
-	$ins=$mod->insert($conn,"tbl_login",$data);
+	$ins=$mod->insert($conn,$table,$data);
 	
 	if($ins)
 	{
 		echo"<script>
            alert('Updated Successfully.Login your Account');
-           window.location.href='bookreg.php';
+           window.location.href='index.php';
            </script>";
 	}
 	else
 	{
 		echo"<script>
            alert('Error In Creating Account');
-           window.location.href='signup.php';
+           window.location.href='index.php';
            </script>";
 	}
 }

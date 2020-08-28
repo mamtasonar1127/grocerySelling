@@ -1,5 +1,5 @@
 <?php
-$conn=new MySQLi("localhost","root","","bookdata");
+$conn=new MySQLi("localhost","root","","grocerystore");
 
 class model
 {
@@ -11,7 +11,7 @@ class model
 	$fields=implode("`,`",$key);
 	$values=implode("','",$vals);
 	
-    $sql="insert into `$table`(`$fields`) values ('$values') "; 
+   	$sql="insert into `$table`(`$fields`) values ('$values') ";
 	return $ex=$conn->query($sql);
 	}
 	
